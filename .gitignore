@@ -1,2 +1,5 @@
+#Virtual Environment
 /venv
+
+#IDE Config
 .idea
