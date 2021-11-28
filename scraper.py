@@ -39,15 +39,13 @@ class Scraper():
         text = req.text
         soup = BeautifulSoup(text, 'html.parser')
 
-        with open("{}_guru.txt".format(self.ticker), "w", encoding="utf-8") as f:
+        with open("./sample/{}_guru.txt".format(self.ticker), "w+", encoding="utf-8") as f:
             f.write(soup.getText())
 
-        with open("{}_guru.txt".format(self.ticker), "r", encoding="utf-8") as f:
+        with open("./sample/{}_guru.txt".format(self.ticker), "r", encoding="utf-8") as f:
             lines = f.readlines()
 
         print("Price: {}".format(lines[361]))
-
-
 
         if not DEBUG:
             os.remove("{}_guru.txt".format(self.ticker))
@@ -56,7 +54,7 @@ class Scraper():
 
 
 def main():
-    ticker = input("Enter Ticker")
+    ticker = input("Enter Ticker: ")
 
     scraper = Scraper(ticker)
 
