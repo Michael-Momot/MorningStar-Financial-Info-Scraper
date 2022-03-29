@@ -1,8 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+from morningstar_scraper import MorningstarScraper
 from array import *
 
+import guru_scraper
 import logging
 
 DEBUG = True
@@ -56,9 +58,15 @@ class Scraper():
 def main():
     ticker = input("Enter Ticker: ")
 
-    scraper = Scraper(ticker)
+    morningstar_scraper = MorningstarScraper(ticker)
 
-    scraper.getGuruFields()
+    morningstar_scraper.test()
+
+
+
+    # scraper = Scraper(ticker)
+    #
+    # scraper.getGuruFields()
 
 
 if __name__ == '__main__':
