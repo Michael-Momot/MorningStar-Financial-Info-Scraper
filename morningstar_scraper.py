@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-
+from openpyxl import load_workbook
 
 
 
@@ -25,7 +25,15 @@ class MorningstarScraper():
         linkToOpen.find_element(By.TAG_NAME, "a").get_attribute("href")
 
         self.driver.get(linkToOpen.find_element(By.TAG_NAME, "a").get_attribute("href"))
+        financials_div = self.driver.find_element(By.ID, "financials")
+        print(financials_div.find_element(By.XPATH, "//td[@headers='Y0 i0']").text)
 
-        # self.driver.find_element(By.LINK_TEXT, "Full Key Ratios Data").click
+        self.driver.find_element(By.LINK_TEXT, "Full Key Ratios Data").click
+
+        wb = load_workbook("C:\Projects\MorningStar-Financial-Info-Scraper\Financial Model.xlsx")
+        wb.active = wb["MSFT"]
+        sheet = wb.active
+        sheet["C5"].value = "TEST"
+        wb.save("C:\Projects\MorningStar-Financial-Info-Scraper\\test.xlsx")
 
 

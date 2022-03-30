@@ -56,8 +56,8 @@ class Scraper():
 
 
 def main():
-    ticker = input("Enter Ticker: ")
-
+    # ticker = input("Enter Ticker: ")
+    ticker = "msft"
     morningstar_scraper = MorningstarScraper(ticker)
 
     morningstar_scraper.test()
